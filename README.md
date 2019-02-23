@@ -21,7 +21,7 @@ cmd~$ list session
 myprofile
 cmd~$ save myprofile.zip (save myprofile session folder as .zip)
 cmd~$ upload myprofile
-{"success":true,"key":"UxiaHl","link":"https://file.io/UxiaHl","expiry":"14 days"} (download with wget "--content-disposition https://file.io/UxiaHl")
+{"success":true,"key":"UxiaHl","link":"https://file.io/UxiaHl","expiry":"14 days"} (download with "wget --content-disposition https://file.io/UxiaHl")
 cmd~$ remove myprofile
 cmd~$ list session
 cmd~$ exit
