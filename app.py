@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os, time, subprocess, atexit
+import os, time, subprocess, atexit, requests
 from helper import open_session
 
 print("selenium session manager")
@@ -90,7 +90,10 @@ while True:
 		if "save" in cmd[0]:
 			if enable_command == True:
 				filename = cmd[1]
-				subprocess.run(["zip", "-r", filename, use_session])
+				if "/" not in filename:
+					subprocess.run(["zip", "-r", filename, use_session])
+				else:
+					print("[INFO] Filename contain / (slash character)")
 			else:
 				print("[INFO] Please select a session")
 
@@ -98,6 +101,20 @@ while True:
 			if "session" in cmd[1]:
 				for key in sessions:
 					print(key)
+
+		if "upload" in cmd[0]:
+			session_id = cmd[1]
+			if session_id in sessions:
+				if os.path.isdir(session_path + session_id):
+					if os.path.isfile(session_path + session_id + ".zip"):
+						file_path = session_path + session_id + ".zip"
+						with open(file_path, 'rb') as f:
+							r = requests.post('https://file.io', files={'file': f})
+							print(r.text)
+					else:
+						print("[INFO] Please create .zip file before upload your session")
+				else:
+					print("[INFO] Session folder doesn't exist !")
 
 	if len(cmd) == 1:
 		if "exit" in cmd[0]:
