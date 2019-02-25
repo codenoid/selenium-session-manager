@@ -19,6 +19,7 @@ cmd~$ use myprofile
 cmd~$ open https://web.whatsapp.com (scan the qr-code and get the logged session)
 cmd~$ list session
 myprofile
+cmd~$ close myprofile (required!!, if you wanna save myprofile as zip)
 cmd~$ save myprofile.zip (save myprofile session folder as .zip)
 cmd~$ upload myprofile
 {"success":true,"key":"UxiaHl","link":"https://file.io/UxiaHl","expiry":"14 days"} (download with "wget --content-disposition https://file.io/UxiaHl")
